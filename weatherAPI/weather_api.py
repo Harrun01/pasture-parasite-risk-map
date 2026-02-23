@@ -13,7 +13,12 @@ with open(json_path, 'r') as f:
     REGION_DATA = json.load(f)
 
 app = Flask(__name__)
-CORS(app)  # Enable CORS for React frontend
+CORS(app, origins=[
+    "http://localhost:3000",
+    "http://127.0.0.1:3000", 
+    "https://pasture-parasite-risk-map.vercel.app",
+    "https://*.vercel.app"
+])  # Enable CORS for React frontend
 
 def get_weather_forecast(coords=None):
     try:
